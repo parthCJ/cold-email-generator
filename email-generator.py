@@ -12,11 +12,12 @@ llm = ChatGroq(
     model="llama-3.1-70b-versatile"
 )
 
+loader = WebBaseLoader("https://www.google.com/about/careers/applications/jobs/results/110690555461018310-software-engineer-iii-infrastructure-core")
 page_data = loader.load().pop().page_content
-# print(pagloader = WebBaseLoader("https://www.google.com/about/careers/applications/jobs/results/110690555461018310-software-engineer-iii-infrastructure-core")e_data)
+# print(page_data)
 
 prompt_extract = PromptTemplate.from_template(
-    """
+        """
         ### SCRAPED TEXT FROM WEBSITE:
         {page_data}
         ### INSTRUCTION:
@@ -59,13 +60,17 @@ prompt_email = PromptTemplate.from_template(
         {job_description}
         
         ### INSTRUCTION:
-        You are Parth Sharma, a 2nd year Student in pursuing Btech.  
+        You are XYZ, a business development executive at XYZ company. XYZ is an AI & Software Consulting company dedicated to facilitating
+        the seamless integration of business processes through automated tools. 
+        Over our experience, we have empowered numerous enterprises with tailored solutions, fostering scalability, 
+        process optimization, cost reduction, and heightened overall efficiency. 
         Your job is to write a cold email to the client regarding the job mentioned above describing the capability of XYZ 
         in fulfilling their needs.
         Also add the most relevant ones from the following links to showcase XYZ's portfolio: {link_list}
-        Remember you are Parth Sharma, A student of Btech 2nd Year. 
+        Remember you are Mohan, BDE at XYZ. 
         Do not provide a preamble.
         ### EMAIL (NO PREAMBLE):
+        
         """
         )
 
